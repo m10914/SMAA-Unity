@@ -4,7 +4,7 @@ using System.Collections;
 public class SMAA : MonoBehaviour
 {
 	public bool ApplyEffect;
-	public int State = 1;
+	public int State = 3;
 	public int Passes = 1;
 
 	private Texture2D black;
