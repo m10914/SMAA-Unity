@@ -38,7 +38,7 @@
 			#pragma target 3.0
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			#define SMAA_RT_METRICS float4(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y, _ScreenParams.x, _ScreenParams.y)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -162,7 +162,7 @@
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			#define SMAA_RT_METRICS float4(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y, _ScreenParams.x, _ScreenParams.y)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -567,7 +567,7 @@ float2 SMAADetectVerticalCornerPattern(float2 weights, float2 texcoord, float2 d
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			#define SMAA_RT_METRICS float4(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y, _ScreenParams.x, _ScreenParams.y)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -672,7 +672,7 @@ void SMAAMovc(float4 cond, inout float4 variable, float4 value) {
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			#define SMAA_RT_METRICS float4(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y, _ScreenParams.x, _ScreenParams.y)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
