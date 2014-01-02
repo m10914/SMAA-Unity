@@ -5,6 +5,7 @@
 		areaTex ("area texture", 2D) = "white" {}
 		luminTex ("lumin texture", 2D) = "white" {}
 		searchTex ("search texture", 2D) = "white" {}
+		SMAA_RT_METRICS ("rt metrics", Vector) = (0,0,0,0)
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -38,7 +39,7 @@
 			#pragma target 3.0
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			//#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -46,6 +47,7 @@
 			#define SMAA_LOCAL_CONTRAST_ADAPTATION_FACTOR 2.0
 
 			sampler2D _MainTex;
+			float4 SMAA_RT_METRICS;
 
 			struct vertOUT
 			{
@@ -162,7 +164,7 @@
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			//#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -179,6 +181,7 @@
 			sampler2D areaTex;
 			sampler2D searchTex;
 			sampler2D luminTex;
+			float4 SMAA_RT_METRICS;
 
 //--------------------------------------------------------
 // S M A A   framework
@@ -567,7 +570,7 @@ float2 SMAADetectVerticalCornerPattern(float2 weights, float2 texcoord, float2 d
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			//#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -576,6 +579,7 @@ float2 SMAADetectVerticalCornerPattern(float2 weights, float2 texcoord, float2 d
 
 			sampler2D _MainTex;
 			sampler2D _SrcTex;
+			float4 SMAA_RT_METRICS;
 
 //-------------------------------------------------
 // S M A A  framework
@@ -672,7 +676,7 @@ void SMAAMovc(float4 cond, inout float4 variable, float4 value) {
 			#pragma glsl
 
 			#define mad(a, b, c) (a * b + c)
-			#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
+			//#define SMAA_RT_METRICS float4(1.0 / 1280.0, 1.0 / 720.0, 1280.0, 720.0)
 			#define SMAA_THRESHOLD 0.05
 			#define SMAA_MAX_SEARCH_STEPS 32
 			#define SMAA_MAX_SEARCH_STEPS_DIAG 16
@@ -680,6 +684,7 @@ void SMAAMovc(float4 cond, inout float4 variable, float4 value) {
 			#define SMAA_LOCAL_CONTRAST_ADAPTATION_FACTOR 2.0
 
 			sampler2D _MainTex;
+			float4 SMAA_RT_METRICS;
 
 			struct vertOUT
 			{

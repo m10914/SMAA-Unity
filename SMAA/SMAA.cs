@@ -4,7 +4,7 @@ using System.Collections;
 public class SMAA : MonoBehaviour
 {
 	public bool ApplyEffect;
-	public int State = 3;
+	public int State = 1;
 	public int Passes = 1;
 
 	private Texture2D black;
@@ -42,6 +42,8 @@ public class SMAA : MonoBehaviour
 	{
 		Graphics.Blit(black, destination);
 
+		Vector4 metrics = new Vector4(1 / (float)Screen.width, 1 / (float)Screen.height, Screen.width, Screen.height);
+
 		if (this.ApplyEffect)
 		{
 			if (State == 1)
@@ -53,6 +55,7 @@ public class SMAA : MonoBehaviour
 				mat.SetTexture("areaTex", GameObject.Find("TextureGenerator").GetComponent<AreaTexture>().alphaTex);
 				mat.SetTexture("luminTex", GameObject.Find("TextureGenerator").GetComponent<AreaTexture>().luminTex);
 				mat.SetTexture("searchTex", GameObject.Find("TextureGenerator").GetComponent<SearchTexture>().alphaTex);
+				mat.SetVector("SMAA_RT_METRICS", metrics);
 
 				var rt = RenderTexture.GetTemporary(Screen.width, Screen.height, 0);
 
@@ -67,6 +70,7 @@ public class SMAA : MonoBehaviour
 				mat.SetTexture("luminTex", GameObject.Find("TextureGenerator").GetComponent<AreaTexture>().luminTex);
 				mat.SetTexture("searchTex", GameObject.Find("TextureGenerator").GetComponent<SearchTexture>().alphaTex);
 				mat.SetTexture("_SrcTex", source);
+				mat.SetVector("SMAA_RT_METRICS", metrics);
 
 				var rt = RenderTexture.GetTemporary(Screen.width, Screen.height, 0);
 				var rt2 = RenderTexture.GetTemporary(Screen.width, Screen.height, 0);
