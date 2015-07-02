@@ -62,7 +62,7 @@ public class SMAA : MonoBehaviour
 				Graphics.Blit(source, rt, mat, 0);
 				Graphics.Blit(rt, destination, mat, 1);
 
-				rt.Release();
+				RenderTexture.ReleaseTemporary(rt);
 			}
 			else if (State == 3)
 			{
@@ -89,9 +89,9 @@ public class SMAA : MonoBehaviour
 				}
 				Graphics.Blit(rt3, destination);
 
-				rt.Release();
-				rt2.Release();
-				rt3.Release();
+				RenderTexture.ReleaseTemporary(rt);
+				RenderTexture.ReleaseTemporary(rt2);
+				RenderTexture.ReleaseTemporary(rt3);
 			}		
 		}
 		else
